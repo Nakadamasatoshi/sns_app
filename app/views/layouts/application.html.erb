@@ -1,13 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>Src</title>
+    <title>SNS App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="<%= mix('/css/app.css') %>">
+    <scrupt src="<%= mix('/js/bootstrap.js') %>"></scrupt>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="main-container"
+     <nav class="custom-navbar"></nav>
+      <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+          <li>
+            <a href="#">投稿一覧</a>
+          </li>
+          <li>
+            <a href="#">新規投稿</a>
+          </li>
+        </ul>
+      </div>
+     </nav>
+     
+     <% if notice %>
+      <div class="alert alert-success" role="alert">
+       <%= notice %>
+      </div>
+     <% end %>
+     <% if alert %>
+      <div class="alert alert-danger" role="alert">
+       <%= alert %>
+      </div>
+     <% end %>
+    
+    
+     <div class="bg-white text-dark">
+      <%= yield %>
+     </div>
+    </div>
+   
+   <script src="<%= mix('/js/app.js')%>"></script>
   </body>
 </html>
