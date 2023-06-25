@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   
   get 'topics/edit', to: 'topics#edit', as: 'edit_topics'
 
+  get '/', to: 'posts#index', as: 'index_post'
+  
 end
