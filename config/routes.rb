@@ -6,12 +6,18 @@ Rails.application.routes.draw do
   # root "articles#index"
   
   # PostsController
+  get '/', to: 'posts#index', as: 'index_post'
+  
   get 'posts/new', to: 'posts#new', as: 'new_post'
+  
+  get 'posts/new', to:'posts#create', as: 'create_post'
 
+  # Topics Controller
   get 'topics/new', to: 'topics#new', as: 'new_topics'
   
   get 'topics/edit', to: 'topics#edit', as: 'edit_topics'
-
-  get '/', to: 'posts#index', as: 'index_post'
   
+  post 'topics/new', to: 'topics#create', as: 'create_topics'
+  
+  post 'topics/edit', to: 'topics#update', as: 'update_topics'
 end

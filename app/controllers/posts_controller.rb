@@ -6,4 +6,8 @@ class PostsController < ApplicationController
   def index
     render :index
   end
+  
+  def create
+    redirect_to new_post_path
+  end
 end
