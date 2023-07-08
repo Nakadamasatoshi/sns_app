@@ -1,8 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto post-form-container">
-      <h2 class="h2">新規登録</h2>
-      <%= form_with(url: create_post_path,local: true, method: :past, html: {class: 'post-form'})do |f| %>
+      <h2 class="h2">新規投稿</h2>
+      <%= form_with(url: create_post_path, model: @post, local: true, method: :post, html: { class: 'post-form' }) do |f| %>
+       <!-- バリデーションエラーメッセージ表示を追加しています -->
+       <% if @post.errors.any? %>
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+          <% end %></ul>
+       <% end %>
+       <!-- ここまで -->
       
       <div class="form-group">
         <%= f.label "タイトル", class: 'form-label' %>
@@ -11,20 +19,20 @@
       
       <div class="form-group">
         <%= f.label "本文", class: 'form-label' %>
-        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.text_area :body, class: 'form-control' %>
       </div>
       
       <div class="form-group image-upload">
         <%= f.label "画像", class: 'form-label' %>
-        <div class="image-preview" id="imagePleview">
-          <img src="" alt="imagePleview" class="imagePleview__image">
-          <span class="image-Pleview__default-text">Image will be displayed here</span>
+        <div class="image-preview" id="imagePreview">
+          <img src="" alt="ImagePreview" class="image-preview__image">
+          <span class="image-preview__default-text">Image will be displayed here</span>
         </div>
         <%= f.file_field :image, class: 'form-control-file', id: 'imageUpload' %>
       </div>
       
       <div class="button-group">
-        <%= f.submit '投稿する', class: 'btn btn-primary' %>
+        <%= f.submit '投稿', class: 'btn btn-primary' %>
       </div>
      <% end %>
     </div>

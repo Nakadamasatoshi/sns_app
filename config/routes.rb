@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   get 'posts/new', to: 'posts#new', as: 'new_post'
   
-  get 'posts/new', to:'posts#create', as: 'create_post'
+  post 'posts/new', to:'posts#create', as: 'create_post'
 
   # Topics Controller
   get 'topics/new', to: 'topics#new', as: 'new_topics'
