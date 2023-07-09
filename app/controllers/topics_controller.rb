@@ -1,18 +1,29 @@
 class TopicsController < ApplicationController
+  before_action :authenticate_user!
+  
+  def index
+    render 'posts/index'
+  end
+ 
+ # ここから 
   def new
+    @topic =Topic.new
     render :new
   end
 
-
   def create
-    redirect_to edit_topics_path
+    @topic =Topic.new(post_params)
+    
+    if @topic.save
+      redirect_to new_topics_path, notice: '登録しました'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  def edit
-    render :edit
+  private
+  def post_params
+    params.require(:topic).permit(:title, :body, :image)
   end
-
-  def update
-    redirect_to update_topics_path
-  end
+  #ここまで
 end
