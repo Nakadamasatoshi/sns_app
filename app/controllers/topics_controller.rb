@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic =Topic.new(post_params)
+    @topic =Topic.new(topic_params)
     
     if @topic.save
       redirect_to new_topics_path, notice: '登録しました'
@@ -22,8 +22,8 @@ class TopicsController < ApplicationController
   end
 
   private
-  def post_params
-    params.require(:topic).permit(:title, :body, :image)
+  def topic_params
+    params.require(:topic).permit(:title)
   end
   #ここまで
 end
