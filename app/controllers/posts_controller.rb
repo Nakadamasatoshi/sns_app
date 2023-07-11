@@ -2,10 +2,18 @@ class PostsController < ApplicationController
  before_action :authenticate_user!
   
   def index
+    #2-11で追加
+    @title = params[:title]
+    if @title.present?
+      @posts = Post.where('title LIKE ?', "%#{@title}%")
+    else
+      @posts = Post.all
+    end
+    #ここまで
     render 'posts/index'
   end
   
-  # ここから
+  # 2-10で追加
   def new
     @post = Post.new
     render :new
