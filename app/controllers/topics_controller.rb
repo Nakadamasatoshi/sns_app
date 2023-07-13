@@ -7,9 +7,9 @@ class TopicsController < ApplicationController
     if @title.present?
       @topics = Topic.where('title LIKE ?', "%#{@title}%")
     else
-      @topics = topic.all
+      @topics = Topic.all
     end
-    render 'topics/index'
+    render 'index'
   end
   #ここまで
  
