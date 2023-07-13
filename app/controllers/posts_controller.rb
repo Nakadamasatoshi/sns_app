@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     end
   
   if @post.save
-    redirect_to index_post_path, notice: '登録しました'
+    redirect_to index_topics_path, notice: '登録しました'
   else
     render :new, status: :unprocessable_entity
   end

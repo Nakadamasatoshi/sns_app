@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   post 'posts/new', to:'posts#create', as: 'create_post'
 
   # Topics Controller
+  # 2-11課題で追加
+  get 'topics/index', to: 'topics#index', as: 'index_topics'
+  # ここまで
   get 'topics/new', to: 'topics#new', as: 'new_topics'
   
   get 'topics/edit', to: 'topics#edit', as: 'edit_topics'

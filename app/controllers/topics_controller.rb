@@ -1,9 +1,17 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
   
+  #2-11課題で追加。@postsを@topicsに変更
   def index
-    render 'posts/index'
+    @title = params[ :title]
+    if @title.present?
+      @topics = Topic.where('title LIKE ?', "%#{@title}%")
+    else
+      @topics = topic.all
+    end
+    render 'topics/index'
   end
+  #ここまで
  
  # ここから 
   def new
@@ -15,7 +23,7 @@ class TopicsController < ApplicationController
     @topic =Topic.new(topic_params)
     
     if @topic.save
-      redirect_to new_topics_path, notice: '登録しました'
+      redirect_to index_topics_path, notice: '登録しました'
     else
       render :new, status: :unprocessable_entity
     end
