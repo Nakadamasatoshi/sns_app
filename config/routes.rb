@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   get 'posts/new', to: 'posts#new', as: 'new_post'
   
   post 'posts/new', to:'posts#create', as: 'create_post'
+  #2-12で追加
+  get 'posts/edit/:id', to: 'posts#edit', as:'edit_post'
+  post 'posts/edit/:id', to: 'posts#update', as:'update_post'
+  #ここまで
+  #2-12削除分で追加
+  delete 'posts/destroy/:id', to: 'posts#destroy', as: 'destroy_post'
+  #ここまで
 
   # Topics Controller
   # 2-11課題で追加

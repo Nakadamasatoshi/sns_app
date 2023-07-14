@@ -19,23 +19,47 @@ class PostsController < ApplicationController
     render :new
   end
   
- def create
+  def create
     @post = Post.new(post_params)
 
     if params[:post][:image]
       @post.image.attach(params[:post][:image])
     end
   
-  if @post.save
-    redirect_to index_topics_path, notice: '登録しました'
-  else
-    render :new, status: :unprocessable_entity
+    if @post.save
+      redirect_to index_topics_path, notice: '登録しました'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end#ここまで
+  #2-12で追加
+  def edit
+    @post = Post.find(params[:id])
+      render :edit
   end
- end
   
- private
- def post_params
-    params.require(:post).permit(:title, :body, :image)
- end
+  def update
+    @post = Post.find(params[:id])
+    if params[:post][:image]
+      @post.image.attach(params[:post][:image])
+    end
+    if @post.update(post_params)
+     redirect_to index_post_path, notice: '更新しました'
+    else
+      render :edit,status: :unprocessable_entity
+    end
+  end
+  
+
+    def post_params
+      params.require(:post).permit(:title, :body, :image)
+    end
+  #ここまで
+  #2-12で追加、削除分
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to index_post_path, notice: '削除しました'
+  end
   #ここまで
 end
