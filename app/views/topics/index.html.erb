@@ -6,12 +6,14 @@
 </div>
 
 <div class="post-list">
+  <!--2-12課題　以下をdiv→aタグにする-->
   <% @topics.each do |topic| %>
-    <div class="topic">
+    <a class="topic" href="<%=edit_topics_path(topic) %>">
       <div class="header">
         <h2 class="title"><%= topic.title %></h2>
         <p class="timestamp"><%= topic.created_at.strftime("%B %d, %Y") %></p>
       </div>
-    </div>
+    </a>
+    <!--ここまで-->
   <% end %>
 </div>

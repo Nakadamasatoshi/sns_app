@@ -24,10 +24,12 @@ Rails.application.routes.draw do
   get 'topics/index', to: 'topics#index', as: 'index_topics'
   # ここまで
   get 'topics/new', to: 'topics#new', as: 'new_topics'
-  
-  get 'topics/edit', to: 'topics#edit', as: 'edit_topics'
+  #2-12課題で「:id」をつけた
+  get 'topics/edit/:id', to: 'topics#edit', as: 'edit_topics'
   
   post 'topics/new', to: 'topics#create', as: 'create_topics'
   
-  post 'topics/edit', to: 'topics#update', as: 'update_topics'
+  post 'topics/edit/:id', to: 'topics#update', as: 'update_topics'
+  #2-12課題「削除」分として追加
+  delete 'topics/destroy/:id', to: 'topics#destroy', as: 'destroy_topics'
 end
