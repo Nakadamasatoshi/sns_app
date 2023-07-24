@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   #2-12削除分で追加
   delete 'posts/destroy/:id', to: 'posts#destroy', as: 'destroy_post'
   #ここまで
+  
+  #commentsController(2-13で追加)
+  get 'posts/show/:post_id/comments/new', to: 'comments#new', as: 'new_comment'
+  post 'posts/show/:post_id/comments/new', to: 'comments#create', as: 'create_comment'
+  #ここまで
 
   # Topics Controller
   # 2-11課題で追加
@@ -32,4 +37,7 @@ Rails.application.routes.draw do
   post 'topics/edit/:id', to: 'topics#update', as: 'update_topics'
   #2-12課題「削除」分として追加
   delete 'topics/destroy/:id', to: 'topics#destroy', as: 'destroy_topics'
+  #2-13課題分として追加
+  get 'topics/show/:topic_id/comments/new', to: 'comments#new_topics', as: 'new_comment_topics'
+  post 'topics/show/:topic_id/comments/new', to: 'comments#create_topics', as: 'create_comment_topics'
 end

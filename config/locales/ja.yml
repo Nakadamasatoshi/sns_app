@@ -4,6 +4,9 @@ ja:
       user: 'ユーザー'
       # postを追加
       post: '投稿'
+      #2-13以下の行を追加
+      topic: 'トピックス'
+      comment: 'コメント'
     attributes:
       user:
         email: 'メールアドレス'
@@ -16,6 +19,9 @@ ja:
        image: '画像'
       topic:
        title: 'スレッド名'
+      #コメントのブロックを追加
+      comment:
+       content: 'コメント'
        
 
   date:

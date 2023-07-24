@@ -8,10 +8,11 @@
 <div class="post-list">
   <!--2-12課題　以下をdiv→aタグにする-->
   <% @topics.each do |topic| %>
-    <a class="topic" href="<%=edit_topics_path(topic) %>">
+  <!--2-13課題　以下をedit_topic_pathをnew_comment_topics_pathに変更 -->
+    <a class="topic" href="<%=new_comment_topics_path(topic) %>">
       <div class="header">
         <h2 class="title"><%= topic.title %></h2>
-        <p class="timestamp"><%= topic.created_at.strftime("%B %d, %Y") %></p>
+        <p class="timestamp"><%= topic.created_at.strftime("%Y年%m月%d日%H:%M") %></p>
       </div>
     </a>
     <!--ここまで-->

@@ -1,0 +1,43 @@
+<div class="post-list">
+  <a class="post" href="<%= edit_topics_path(@topic) %>">
+    <div class="header">
+      <h2 class="title"><%= @topic.title %></h2>
+      <p class="timestamp"><%= @topic.created_at.strftime("%B %d, %Y") %></p>
+  </a>
+</div>
+
+<div class="comment-form-container">
+  <div class="comment">
+    <%= form_with(url: create_comment_topics_path(@topic), model: @comment, local: true, method: :post) do |f| %>
+
+      <% if @comment.errors.any? %>
+        <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %> </ul>
+      <% end %>
+
+      <div class="form">
+        <div class="textarea">
+          <%= f.label "コメント", class: 'form-label' %>
+          <%= f.text_field :content, class: 'form-control' %>
+        </div>
+
+        <div class="button-group">
+          <%= f.submit '送信', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="comment-list">
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <div class="body">
+        <p class="content"><%= comment.content %></p>
+        <p class="timestamp"><%= comment.created_at.strftime("%B %d, %Y") %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

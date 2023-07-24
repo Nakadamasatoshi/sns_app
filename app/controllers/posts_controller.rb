@@ -27,11 +27,14 @@ class PostsController < ApplicationController
     end
   
     if @post.save
-      redirect_to index_topics_path, notice: '登録しました'
+      redirect_to index_post_path, notice: '登録しました'
     else
       render :new, status: :unprocessable_entity
     end
-  end#ここまで
+  end
+  
+  
+  #ここまで
   #2-12で追加
   def edit
     @post = Post.find(params[:id])
@@ -44,16 +47,13 @@ class PostsController < ApplicationController
       @post.image.attach(params[:post][:image])
     end
     if @post.update(post_params)
-     redirect_to index_post_path, notice: '更新しました'
+      redirect_to index_post_path, notice: '更新しました'
     else
-      render :edit,status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
   
-
-    def post_params
-      params.require(:post).permit(:title, :body, :image)
-    end
+  
   #ここまで
   #2-12で追加、削除分
   def destroy
@@ -62,4 +62,8 @@ class PostsController < ApplicationController
     redirect_to index_post_path, notice: '削除しました'
   end
   #ここまで
+  private
+  def post_params
+    params.require(:post).permit(:title, :body, :image)
+  end
 end

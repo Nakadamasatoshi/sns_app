@@ -8,7 +8,8 @@
 <div class="post-list">
   <% @posts.each do |post| %>
   <!-- 2-12以下の行をdivタグからaタグに変更-->
-    <a class="post" href="<%= edit_post_path(post)%>">
+  <!-- 2-13以下の行のedit_post_pathをnew_comment_pathに変更-->
+    <a class="post" href="<%= new_comment_path(post)%>">
       <div class="header">
         <h2 class="title"><%= post.title %></h2>
         <p class="timestamp"><%=post.created_at.strftime("%B %d, %Y") %></p>
