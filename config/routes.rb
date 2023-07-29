@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   #2-12削除分で追加
   delete 'posts/destroy/:id', to: 'posts#destroy', as: 'destroy_post'
   #ここまで
+  #2-13本文で追加
+  get 'posts/show/:post_id/comments/new', to: 'comments#new', as: 'new_comment'
+  post 'posts/show/:post_id/comments/new', to: 'comments#create', as: 'create_comment'
+  # ここまで
 
   # Topics Controller
   # 2-11課題で追加
