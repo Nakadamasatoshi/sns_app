@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'posts/show/:post_id/comments/new', to: 'comments#new', as: 'new_comment'
   post 'posts/show/:post_id/comments/new', to: 'comments#create', as: 'create_comment'
   # ここまで
-
+  #ここから修正します
   # Topics Controller
   # 2-11課題で追加
   get 'topics/index', to: 'topics#index', as: 'index_topics'
