@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   post 'posts/show/:post_id/comments/new', to: 'comments#create', as: 'create_comment'
   # ここまで
   #ここから修正します
+  #2-13で追加
+  get 'profile/show', to: 'profile#show', as: 'show_profile'
+  get 'profile/new', to: 'profile#new', as: 'new_profile'
+  post 'profile/new', to: 'profile#create', as: 'create_profile'
+  #ここまで
   # Topics Controller
   # 2-11課題で追加
   get 'topics/index', to: 'topics#index', as: 'index_topics'

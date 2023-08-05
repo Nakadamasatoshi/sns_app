@@ -1,0 +1,9 @@
+<div class="post-list">
+  <% @user.each do |user| %>
+    <div class="post">
+      <div class="header">
+        <h2 class="title"><%= user.name %></h2>
+      </div>
+    </div>
+  <% end %>
+</div>
