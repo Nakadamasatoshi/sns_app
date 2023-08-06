@@ -1,9 +1,36 @@
-<div class="post-list">
-  <% @user.each do |user| %>
-    <div class="post">
+<!-- app/views/profile/show.html.erb -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto post-form-container">
+     <div class="post">
       <div class="header">
-        <h2 class="title"><%= user.name %></h2>
+        <h2 class="title"><strong>ユーザー名:</strong><%= @profile.name %></h2>
       </div>
+      
+      <div class="form-group">
+        <div class="form-control">
+          <p class="form-label"><strong>住所:</strong><%= @profile.address %></p>
+          <p class="form-label"><strong>年齢:</strong> <%= @profile.age %></p>
+          <p class="form-label"><strong>性別:</strong> <%= @profile.sex %></p>
+        </div>
+      </div>
+      
+      <div class="form-group image-upload">
+        <h2 class="form-label ">ユーザー画像</h2>
+         <div class="image">
+          <% if @profile.image.attached? %>
+            <%= image_tag @profile.image, width: 400, height: 300 %>
+          <% else %>
+            <p>No image attached to this profile.</p>
+          <% end %>
+         </div>
+      </div>
+        <%= link_to "プロフィール編集", edit_profile_path(@profile), class: "btn btn-primary" %>
+     </div>
     </div>
-  <% end %>
+  </div>
 </div>
+
+
+
+

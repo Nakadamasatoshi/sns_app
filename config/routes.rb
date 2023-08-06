@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'profile/show', to: 'profile#show', as: 'show_profile'
   get 'profile/new', to: 'profile#new', as: 'new_profile'
   post 'profile/new', to: 'profile#create', as: 'create_profile'
+  get 'profile/edit/:id', to: 'profile#edit', as: 'edit_profile'
+  post 'profile/update/:id', to: 'profile#update', as: 'update_profile'
   #ここまで
   # Topics Controller
   # 2-11課題で追加

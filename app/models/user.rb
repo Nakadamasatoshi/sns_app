@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   #2-13課題で追加
-  has_many :profiles, dependent: :destroy
+  has_one :profiles, dependent: :destroy
 end
